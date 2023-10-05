@@ -28,7 +28,7 @@ const LOAD_BALANCER = AccessEnv('LOAD_BALANCER');
 
 const student = AccessEnv('student');
 const teacher = AccessEnv('teacher')
-
+const auth = AccessEnv('auth');
 const SYSTEM_TOKEN = AccessEnv('SYSTEM_TOKEN');
 
 const QUEUE_URL = AccessEnv('QUEUE_URL');
@@ -47,6 +47,7 @@ module.exports = {
     serviceName: HOST_SERVICE_NAME,
     buildNumber: BUILD_NUMBER,
     loadBalancer: LOAD_BALANCER,
+    auth:auth,
     student:student,
     teacher:teacher,
   },
@@ -72,6 +73,7 @@ module.exports = {
   loadBalancer: LOAD_BALANCER,
   student: student,
   teacher:teacher,
+  auth:auth,
   sessionName: SESSION_NAME,
   media_s3: MEDIA_S3,
   bizBaseUrl: BIZ_BASE_URL,
