@@ -4,19 +4,19 @@ const { ENV, ADMIN } = require('@common/utility/constants');
 const {
   Logger: log,
   ErrorHandler: { INTERNAL_SERVER_ERROR },
-  apiServices,
-  AuthManager,
+  // apiServices,
+  // AuthManager,
   Logger,
 } = require('intelli-utility');
-
+const { default: axios } = require('axios');
 const VERIFY_OTP_ERROR = require('../../../common/libs/ErrorHandler/VERIFY_OTP_ERROR');
 
-const { bizBaseUrl } = require('@config');
+const { bizBaseUrl ,auth } = require('@config');
 
-const {
-  ref_ms: { onStatusUpdate },
-  auth: { Token },
-} = apiServices;
+// const {
+//   ref_ms: { onStatusUpdate },
+//   auth: { Token },
+// } = apiServices;
 const { AppData, IsNewUser } = require('./AppUpdate');
 
 const { sendOtpAsync, verifyOTPAsync } = require('../../services/v1/otpServiceAsync');
@@ -29,6 +29,10 @@ const {createTeacher, getTeacher} = require('../../services/v1/Teacher');
 const {createStudent, getStudent} = require('../../services/v1/Student')
 
 //const { FavouriteController } = require('.');
+
+
+
+
 
 const processToSendOtp = async (params) => {
   log.info({ info: { message: 'Otp Controller :: Inside Provess To Send OTP' } });
@@ -169,6 +173,31 @@ const verifyOTP = async ({ otp, phone, deviceId, fcmToken, headers, referredBy, 
   //call Fcm token service to save token
 
   // await saveFCMToken(userId, deviceId, fcmToken, app_name);
+
+const Token = async ({headers,params}) => {
+const { userId } = params;
+    let a=userId.toString();
+  // let { userId.toString()} = args
+  try {
+    const config = {
+      method: 'get',
+      url: `${auth}/auth/apis/v1/token/${a}`,
+      headers,
+    };
+    const data = await axios(config);
+   
+    return data;
+  } catch (error) {
+    console.log(error);
+    throw new ORDER_SERVICE_ERROR(error);
+  }
+};
+
+
+
+
+
+
 
   try {
     const authServiceResponse = await Token({
