@@ -1,5 +1,5 @@
 const { createUUID } = require('@root/src/common/libs/UUID/UUIDV4');
-const { systemToken, loadBalancer } = require('@root/src/config');
+const { systemToken, loadBalancer,student } = require('@root/src/config');
 const { default: axios } = require('axios');
 
 const getStudent = async (args) => {
@@ -8,7 +8,7 @@ const getStudent = async (args) => {
   try {
     const config = {
       method: 'get',
-      url: `${loadBalancer}/sts/apis/v1/user/${userId}`,
+      url: `${student}/sts/apis/v1/user/${userId}`,
       headers: {
         app_name: 'studentApp',
         app_version_code: '101',
@@ -33,7 +33,7 @@ const createStudent = async (args) => {
   try {
     const config = {
       method: 'post',
-      url: `${loadBalancer}/sts/apis/v1/student-create`,
+      url: `${student}/sts/apis/v1/student-create`,
       headers: {
         app_name: 'studentApp',
         app_version_code: '101',
