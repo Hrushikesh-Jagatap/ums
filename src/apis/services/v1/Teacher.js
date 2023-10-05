@@ -1,5 +1,5 @@
 const { createUUID } = require('@root/src/common/libs/UUID/UUIDV4');
-const { systemToken, loadBalancer } = require('@root/src/config');
+const { systemToken, loadBalancer ,teacher} = require('@root/src/config');
 const { default: axios } = require('axios');
 
 const getTeacher = async (args) => {
@@ -9,7 +9,7 @@ const getTeacher = async (args) => {
   try {
     const config = {
       method: 'get',
-      url: `${loadBalancer}/tms/apis/v1/user/${userId}`,
+      url: `${teacher}/tms/apis/v1/user/${userId}`,
       headers: {
         app_name: 'teacherApp',
         app_version_code: '101',
@@ -34,7 +34,7 @@ const createTeacher = async (args) => {
   try {
     const config = {
       method: 'post',
-      url: `${loadBalancer}/tms/apis/v1/teacher-create`,
+      url: `${teacher}/tms/apis/v1/teacher-create`,
       headers: {
         app_name: 'teacherApp',
         app_version_code: '101',
