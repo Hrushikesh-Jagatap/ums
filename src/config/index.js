@@ -26,7 +26,7 @@ const BIZ_BASE_URL = AccessEnv('BIZ_BASE_URL');
 
 const LOAD_BALANCER = AccessEnv('LOAD_BALANCER');
 
-const student = AccessEnv('Student');
+const student = AccessEnv('student');
 const teacher = AccessEnv('teacher')
 
 const SYSTEM_TOKEN = AccessEnv('SYSTEM_TOKEN');
