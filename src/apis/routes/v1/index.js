@@ -8,7 +8,10 @@ const EmployeeRouter = require('./Employee');
 const OrganizationRouter = require('./Organization');
 const FavouriteRouter = require('./Favourite');
 const ConsumerRouter = require('./Consumer');
-
+const HomeRouter = require('./HomeRouter')
+const PrivateRouter = require('./PrivateRouter')
+router.use('/users', HomeRouter);
+router.use('/users', PrivateRouter);
 router.use('/favourite', AuthManager.requiresScopes(['Users', 'SYSTEM', 'ADMIN']), FavouriteRouter);
 router.use('/users', OtpRouter);
 
