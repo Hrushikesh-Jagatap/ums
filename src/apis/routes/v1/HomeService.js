@@ -1,13 +1,13 @@
-const HomeTuition = require('@models/HomeTut');
-// Create Home Tuition
-const createHomeTuition = async (homeTuitionData) => {
-  try {
-    const homeTuition = await HomeTuition.create(homeTuitionData);
-    return homeTuition;
-  } catch (error) {
-    throw new Error('Internal server error');
-  }
-};
-module.exports = {
-  createHomeTuition,
-};
+
+const express = require('express');
+const router = express.Router();
+const  HomeRouterController = require('@controllers/v1/HomeController');
+router.post('/home-tuition', async (req, res, next) => {
+    // Extract the necessary data from the request body
+    try {
+        const result = await HomeRouterController.createHomeTuition(req, res, next);
+    } catch (error) {
+        next(error);
+    }
+});
+module.exports = router;
